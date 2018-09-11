@@ -1,0 +1,30 @@
+.root {
+     -fx-background: #eee;
+     -fx-color:black;
+}
+
+.stackPane {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+}
+
+.label {
+    -fx-text-fill: black;
+}
+
+.movies {
+    -fx-background-image: url("Images/background.png");
+}
+
+.movieTitle{
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+.movieType {
+    -fx-font-size: 12px;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
