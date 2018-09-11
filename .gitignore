@@ -6,3 +6,5 @@ CinemaTicketBooking\.iml
 
 \.DS_Store
 /bin/
+\.project
+\.classpath
