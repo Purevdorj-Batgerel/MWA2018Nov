@@ -15,8 +15,8 @@ public class Staff extends Person {
 		return staffID;
 	}
 
-	public boolean addMovie(String name, int rate, LocalDate releasedDate, String type, int duringTime) {
-		MovieScheduledFactory.createMovie(name, rate, releasedDate, type, duringTime);
+	public boolean addMovie(String name, TypeMovie type, int time, String director, AgeRating rate, String description) {
+		MovieScheduledFactory.createMovie(name, type, time, director, rate, description);
 		return true;
 	}
 	public void deleteMovie(String name, int rate, LocalDate releasedDate, String type, int duringTime) throws Exception{

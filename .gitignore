@@ -8,3 +8,7 @@ CinemaTicketBooking\.iml
 /bin/
 \.project
 \.classpath
+
+derby\.log
+
+Cinema/db\.lck

@@ -7,10 +7,10 @@ public class Schedule {
 	private Hall hall;
 	private LocalDate time;
 
-	Schedule(LocalDate time, String name, int rate, LocalDate releasedDate, String type, int duringTime,
+	Schedule(LocalDate time, String name, TypeMovie type, int dtime, String director, AgeRating rate, String description,
 			int hallNo, int totalSeat) {
 		this.time = time;
-		movie = new Movie(name, rate, releasedDate, type, duringTime);
+		movie = new Movie(name, type, dtime, director, rate, description);
 		hall = new Hall(hallNo, totalSeat);
 	}
 	Schedule(LocalDate time, Movie movie, Hall hall) {

@@ -8,8 +8,8 @@ public class MovieScheduledFactory {
 		return new Hall(hallNo, totalSeat);
 	}
 
-	public static Movie createMovie(String name, int rate, LocalDate releasedDate, String type, int duringTime) {
-		return new Movie(name, rate, releasedDate, type, duringTime);
+	public static Movie createMovie(String name, TypeMovie type, int time, String director, AgeRating rate, String description) {
+		return new Movie(name, type, time, director, rate, description);
 	}
 
 	public static Schedule createSchedule(LocalDate time, Movie movie, Hall hall) {

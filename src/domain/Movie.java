@@ -1,21 +1,21 @@
 package domain;
 
-import java.time.LocalDate;
 
 public class Movie {
 	private String name;
-	private int rate;
-	private LocalDate releasedDate;
-	private String type;
+	private TypeMovie type;
 	private int duringTime;
-	
+	private String director;
+	private AgeRating rate;
+	private String description;
 
-	Movie(String name, int rate, LocalDate releasedDate, String type, int duringTime) {
+	Movie(String name, TypeMovie type, int time, String director, AgeRating rate, String description) {
 		this.name = name;
-		this.rate = rate;
-		this.releasedDate = releasedDate;
 		this.type = type;
-		this.duringTime = duringTime;
+		this.duringTime = time;
+		this.director = director;
+		this.rate = rate;
+		this.description = description;
 	}
 
 	public String getName() {
@@ -26,27 +26,11 @@ public class Movie {
 		this.name = name;
 	}
 
-	public int getRate() {
-		return rate;
-	}
-
-	public void setRate(int rate) {
-		this.rate = rate;
-	}
-
-	public LocalDate getReleasedDate() {
-		return releasedDate;
-	}
-
-	public void setReleasedDate(LocalDate releasedDate) {
-		this.releasedDate = releasedDate;
-	}
-
-	public String getType() {
+	public TypeMovie getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(TypeMovie type) {
 		this.type = type;
 	}
 
@@ -58,9 +42,34 @@ public class Movie {
 		this.duringTime = duringTime;
 	}
 
+	public String getDirector() {
+		return director;
+	}
+
+	public void setDirector(String director) {
+		this.director = director;
+	}
+
+	public AgeRating getRate() {
+		return rate;
+	}
+
+	public void setRate(AgeRating rate) {
+		this.rate = rate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("Movie name: %s \nDuring time: %d\nType: %s\nRate: %d\nReleased date: %s", name,
-				duringTime, type, rate, releasedDate.toString());
+		return String.format(
+				"Movie name: %s,\nType: %s\nDuring time: %d\n" + "Director: %s\nAge rating: %s\nDescription: %s",
+				this.name, this.type, this.duringTime, this.director, this.rate, this.description);
 	}
 }

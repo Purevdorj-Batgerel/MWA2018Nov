@@ -8,11 +8,10 @@ public class Booking {
 	private Schedule schedule;
 	private Payment payment;
 
-	public Booking(int bookingNo, LocalDate bookingDate, LocalDate time, String name, int rate, LocalDate releasedDate,
-			String type, int duringTime, int hallNo, int totalSeat, int paymentID, double paymentAmount) {
+	public Booking(int bookingNo, LocalDate bookingDate, LocalDate time, String name, TypeMovie type, int duringtime, String director, AgeRating rate, String description, int hallNo, int totalSeat, int paymentID, double paymentAmount) {
 		this.bookingNo = bookingNo;
 		this.bookingDate = bookingDate;
-		Movie movie = new Movie(name, rate, releasedDate, type, duringTime);
+		Movie movie = new Movie(name, type, duringtime, director, rate, description);
 		Hall hall = new Hall(hallNo, totalSeat);
 		this.schedule = new Schedule(time, movie, hall);
 		this.payment=new Payment(paymentID, paymentAmount);
