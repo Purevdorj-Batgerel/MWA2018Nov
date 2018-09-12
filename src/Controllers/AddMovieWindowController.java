@@ -1,6 +1,8 @@
 package Controllers;
 
 import Main.MainWindow;
+import dataAccess.DBFactory;
+import domain.MovieScheduledFactory;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,7 +54,7 @@ public class AddMovieWindowController {
 
     public void handleSaveButtonAction(ActionEvent actionEvent) {
         //Save to Database
-
+     //   DBFactory.addMovie(MovieScheduledFactory.createMovie(name, rate, releasedDate, type, duringTime));
         boolean saveSuccess = true;
         if (saveSuccess) {
             MainWindow.changeScene("Main");

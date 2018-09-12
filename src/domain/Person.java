@@ -1,8 +1,15 @@
 package domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Person implements iPerson{
+public class Person implements iPerson,Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String firstName;
 	private String lastName;
 	private LocalDate dob;

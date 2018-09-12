@@ -2,6 +2,7 @@ package domain;
 
 import java.time.LocalDate;
 
+
 public class Staff extends Person {
 	private int staffID;
 
