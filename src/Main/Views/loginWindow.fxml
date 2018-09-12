@@ -10,9 +10,9 @@
     <Text id="welcome-text" text="Welcome" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0"/>
 
     <Label text="User Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
         <Button onAction="#handleSubmitButtonAction" text="Button"/>
