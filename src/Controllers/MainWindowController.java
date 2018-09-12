@@ -1,10 +1,13 @@
 package Controllers;
 
+import Main.MainWindow;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,6 +22,8 @@ import javafx.util.Duration;
 public class MainWindowController {
     @FXML
     private HBox movieHBox;
+    @FXML
+    private Button addMovieButton;
 
     @FXML
     public void onMouseEnter(MouseEvent event) {
@@ -36,22 +41,39 @@ public class MainWindowController {
         animation.play();
     }
 
-    @FXML
-    public void initialize() {
-        addMovie(156, "Action", "Avengers: Infinity War", "/Main/Views/HO00000490.jpg");
-        addMovie(97, "Animation", "Hotel Transylvania 3: Summer Vacation", "/Main/Views/HO00000502.jpg");
-        addMovie(147, "Action", "Mission: Impossible - Fallout", "/Main/Views/HO00000504.jpg");
-        addMovie(113, "Action", "The Meg", "/Main/Views/HO00000506.jpg");
-        addMovie(105, "Animation", "Christopher Robin", "/Main/Views/HO00000507.jpg");
+    private void onMouseClick(MouseEvent mouseEvent) {
+        int id = (int) ((StackPane) mouseEvent.getTarget()).getProperties().get("id");
+        MainWindow.changeScene("More");
     }
 
-    public void addMovie(int duration, String type, String title, String posterImageSource) {
+
+    @FXML
+    public void initialize() {
+        //Check database user
+        boolean isUserStaff = true;
+
+        if (!isUserStaff) {
+            addMovieButton.setVisible(false);
+        }
+
+        //Get Movie details to populate movie list;
+
+        addMovie(156, "Action", "Avengers: Infinity War", "/Main/Views/HO00000490.jpg", 1);
+        addMovie(97, "Animation", "Hotel Transylvania 3: Summer Vacation", "/Main/Views/HO00000502.jpg", 2);
+        addMovie(147, "Action", "Mission: Impossible - Fallout", "/Main/Views/HO00000504.jpg", 3);
+        addMovie(113, "Action", "The Meg", "/Main/Views/HO00000506.jpg", 4);
+        addMovie(105, "Animation", "Christopher Robin", "/Main/Views/HO00000507.jpg", 5);
+
+        System.out.println("List Populated");
+    }
+
+    public void addMovie(int duration, String type, String title, String posterImageSource, int id) {
         StackPane stackPane = new StackPane();
         stackPane.setMinWidth(220f);
         stackPane.setOnMouseEntered(this::onMouseEnter);
         stackPane.setOnMouseExited(this::onMouseExit);
+        stackPane.setOnMouseClicked(this::onMouseClick);
         stackPane.getStyleClass().add("stackPane");
-
 
         VBox vBox = new VBox();
         vBox.setPrefHeight(200f);
@@ -89,6 +111,11 @@ public class MainWindowController {
         StackPane.setMargin(poster, new Insets(-11, 0, 0, 0));
 
         stackPane.getChildren().addAll(vBox, poster);
+        stackPane.getProperties().put("id", id);
         movieHBox.getChildren().add(stackPane);
+    }
+
+    public void handleAddMovieAction(ActionEvent actionEvent) {
+        MainWindow.changeScene("AddMovie");
     }
 }

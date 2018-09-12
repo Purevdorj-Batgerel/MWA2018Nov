@@ -1,6 +1,5 @@
 package Main;
 
-import Controllers.MainWindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,7 +20,6 @@ public class MainWindow extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         primaryStage.setTitle("Cinema");
 
         Parent root = FXMLLoader.load(getClass().getResource("Views/mainWindow.fxml"));
@@ -29,11 +27,10 @@ public class MainWindow extends Application {
         Scene mainScene = new Scene(root, 900, 600);
         screenController = new ScreenController(mainScene);
 
-        screenController.addScreen("Login", FXMLLoader.load(getClass().getResource("Views/loginWindow.fxml")));
-        screenController.addScreen("Main", FXMLLoader.load(getClass().getResource("Views/mainWindow.fxml")));
-
-//        MainWindowController mainWindowController = new MainWindowController();
-
+        screenController.addScreen("Login", "Views/loginWindow.fxml");
+        screenController.addScreen("Main", "Views/mainWindow.fxml");
+        screenController.addScreen("AddMovie", "Views/addMovieWindow.fxml");
+        screenController.addScreen("more", "Views/moreWindow.fxml");
 
         primaryStage.setScene(mainScene);
         primaryStage.show();

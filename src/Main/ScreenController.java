@@ -1,19 +1,20 @@
 package Main;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class ScreenController {
-    private HashMap<String, Pane> screenMap = new HashMap<>();
+    private HashMap<String, String> screenMap = new HashMap<>();
     private Scene main;
 
     public ScreenController(Scene main) {
         this.main = main;
     }
 
-    protected void addScreen(String name, Pane pane) {
+    protected void addScreen(String name, String pane) {
         screenMap.put(name, pane);
     }
 
@@ -22,7 +23,10 @@ public class ScreenController {
     }
 
     protected void activate(String name) {
-        main.setRoot(screenMap.get(name));
-
+        try {
+            main.setRoot(FXMLLoader.load(getClass().getResource(screenMap.get(name))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
