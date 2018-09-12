@@ -8,6 +8,7 @@ public class Movie {
 	private LocalDate releasedDate;
 	private String type;
 	private int duringTime;
+	
 
 	Movie(String name, int rate, LocalDate releasedDate, String type, int duringTime) {
 		this.name = name;
