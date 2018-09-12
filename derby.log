@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Wed Sep 12 16:52:46 CDT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0165-cfc5-b8f1-00000679c7f8 
-on database directory C:\Users\surenkhuu\Documents\GitHub\movieticketbooking\Cinema with class loader sun.misc.Launcher$AppClassLoader@2a139a55 
-Loaded from file:/C:/Users/surenkhuu/Documents/GitHub/movieticketbooking/src/dataAccess/lib/derby.jar
+Wed Sep 12 17:30:23 CDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0165-cfe8-2a8a-00000f3180e0 
+on database directory D:\Study\Modern Programming practice\groupProject\CinemaTicketBooking\Cinema with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@28c97a5 
+Loaded from file:/D:/Study/Modern%20Programming%20practice/groupProject/CinemaTicketBooking/src/dataAccess/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_181-b13
-user.dir=C:\Users\surenkhuu\Documents\GitHub\movieticketbooking
+java.runtime.version=10.0.2+13
+user.dir=D:\Study\Modern Programming practice\groupProject\CinemaTicketBooking
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0

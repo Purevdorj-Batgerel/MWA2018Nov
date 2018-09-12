@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -15,6 +17,14 @@ import javafx.stage.FileChooser;
 import java.io.File;
 
 public class AddMovieWindowController {
+    @FXML
+    private TextField titleInput;
+    @FXML
+    private TextField durationInput;
+    @FXML
+    private TextArea descriptionInput;
+    @FXML
+    private TextField directorInput;
     @FXML
     private ChoiceBox typeChoice;
     @FXML

@@ -1,7 +1,5 @@
 package Main;
 
-import java.sql.SQLException;
-
 import dataAccess.DBConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,10 +9,9 @@ import javafx.stage.Stage;
 
 public class MainWindow extends Application {
 
+    public static DBConnection Conn = null;
     private static ScreenController screenController;
 
-	public static DBConnection Conn = null;
-	
     public static void main(String[] args) {
     
 	/*	try {
@@ -33,6 +30,7 @@ public class MainWindow extends Application {
     public static void changeScene(String sceneName) {
         screenController.activate(sceneName);
     }
+
     public static void changeScene(String sceneName, String key, Object value) {
         screenController.activate(sceneName, key, value);
     }
@@ -44,7 +42,8 @@ public class MainWindow extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Views/loginWindow.fxml"));
 
         Scene mainScene = new Scene(root, 900, 600);
-        screenController = new ScreenController(mainScene);
+        screenController = new ScreenController(primaryStage);
+//        screenController = new ScreenController(mainScene);
 
         screenController.addScreen("Login", "Views/loginWindow.fxml");
         screenController.addScreen("Main", "Views/mainWindow.fxml");
