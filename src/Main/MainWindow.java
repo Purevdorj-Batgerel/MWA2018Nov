@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 public class MainWindow extends Application {
 
     private static ScreenController screenController;
+
 	public static DBConnection Conn = null;
 	
     public static void main(String[] args) {
@@ -32,6 +33,9 @@ public class MainWindow extends Application {
     public static void changeScene(String sceneName) {
         screenController.activate(sceneName);
     }
+    public static void changeScene(String sceneName, String key, Object value) {
+        screenController.activate(sceneName, key, value);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -45,7 +49,7 @@ public class MainWindow extends Application {
         screenController.addScreen("Login", "Views/loginWindow.fxml");
         screenController.addScreen("Main", "Views/mainWindow.fxml");
         screenController.addScreen("AddMovie", "Views/addMovieWindow.fxml");
-        screenController.addScreen("more", "Views/moreWindow.fxml");
+        screenController.addScreen("More", "Views/moreWindow.fxml");
 
         primaryStage.setScene(mainScene);
         primaryStage.show();

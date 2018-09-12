@@ -1,6 +1,7 @@
 package Main;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.io.IOException;
@@ -24,7 +25,18 @@ public class ScreenController {
 
     protected void activate(String name) {
         try {
-            main.setRoot(FXMLLoader.load(getClass().getResource(screenMap.get(name))));
+            Parent root = FXMLLoader.load(getClass().getResource(screenMap.get(name)));
+            main.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    protected void activate(String name, String key, Object value) {
+        main.getProperties().put(key, value);
+        System.out.println("SET " + main);
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(screenMap.get(name)));
+            main.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }

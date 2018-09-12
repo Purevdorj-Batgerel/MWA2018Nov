@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -24,28 +25,6 @@ public class MainWindowController {
     private HBox movieHBox;
     @FXML
     private Button addMovieButton;
-
-    @FXML
-    public void onMouseEnter(MouseEvent event) {
-        TranslateTransition animation = new TranslateTransition(Duration.millis(200), ((StackPane) event.getTarget()).getChildren().get(1));
-        animation.setInterpolator(Interpolator.EASE_BOTH);
-        animation.setToY(-20f);
-        animation.play();
-    }
-
-    @FXML
-    public void onMouseExit(MouseEvent event) {
-        TranslateTransition animation = new TranslateTransition(Duration.millis(200), ((StackPane) event.getTarget()).getChildren().get(1));
-        animation.setInterpolator(Interpolator.EASE_BOTH);
-        animation.setToY(0f);
-        animation.play();
-    }
-
-    private void onMouseClick(MouseEvent mouseEvent) {
-        int id = (int) ((StackPane) mouseEvent.getTarget()).getProperties().get("id");
-        MainWindow.changeScene("More");
-    }
-
 
     @FXML
     public void initialize() {
@@ -113,6 +92,31 @@ public class MainWindowController {
         stackPane.getChildren().addAll(vBox, poster);
         stackPane.getProperties().put("id", id);
         movieHBox.getChildren().add(stackPane);
+    }
+
+    @FXML
+    public void onMouseEnter(MouseEvent event) {
+        TranslateTransition animation = new TranslateTransition(Duration.millis(200), ((StackPane) event.getTarget()).getChildren().get(1));
+        animation.setInterpolator(Interpolator.EASE_BOTH);
+        animation.setToY(-20f);
+        animation.play();
+    }
+
+    @FXML
+    public void onMouseExit(MouseEvent event) {
+        TranslateTransition animation = new TranslateTransition(Duration.millis(200), ((StackPane) event.getTarget()).getChildren().get(1));
+        animation.setInterpolator(Interpolator.EASE_BOTH);
+        animation.setToY(0f);
+        animation.play();
+    }
+
+    private void onMouseClick(MouseEvent mouseEvent) {
+        Node component = (Node) mouseEvent.getTarget();
+        while(component.getParent() != null && !(component instanceof StackPane)) {
+            component = component.getParent();
+        }
+        int id = (int) component.getProperties().get("id");
+        MainWindow.changeScene("More", "id", id);
     }
 
     public void handleAddMovieAction(ActionEvent actionEvent) {
