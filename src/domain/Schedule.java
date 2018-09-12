@@ -7,13 +7,13 @@ public class Schedule {
 	private Hall hall;
 	private LocalDate time;
 
-	public Schedule(LocalDate time, String name, int rate, LocalDate releasedDate, String type, int duringTime,
+	Schedule(LocalDate time, String name, int rate, LocalDate releasedDate, String type, int duringTime,
 			int hallNo, int totalSeat) {
 		this.time = time;
 		movie = new Movie(name, rate, releasedDate, type, duringTime);
 		hall = new Hall(hallNo, totalSeat);
 	}
-	public Schedule(LocalDate time, Movie movie, Hall hall) {
+	Schedule(LocalDate time, Movie movie, Hall hall) {
 		this.time=time;
 		this.movie=movie;
 		this.hall=hall;
