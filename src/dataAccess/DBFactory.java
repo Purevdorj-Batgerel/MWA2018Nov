@@ -1,6 +1,7 @@
 package dataAccess;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -61,4 +62,16 @@ public final class DBFactory {
         }
         return null;
     }
+
+	public static Boolean addSchedule(Movie m, Hall h, LocalDateTime d) {
+		// TODO Auto-generated method stub
+		  try {
+	            DBConnection conn = new DBConnection();
+	            return conn.addScheduleByObject(m,h,d);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+		return false;
+		
+	}
 }

@@ -29,13 +29,14 @@ public class initialData {
 
             stmt.execute("CREATE TABLE halls ("
                     + "					id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
-                    + "					hallNo INTEGER NOT NULL," + "					NAME VARCHAR(24),"
+                    + "					hallNo INTEGER NOT NULL," 
+                    + "					NAME VARCHAR(24),"
                     + "					totalSeat INTEGER ,"
                     + "				    CONSTRAINT hall_primary_key PRIMARY KEY (id))");
 
             stmt.execute("CREATE TABLE schedules ("
                     + "					id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
-                    + "					sdate DATE," + "					movid INTEGER,"
+                    + "					sdate DATETIME," + "					movid INTEGER,"
                     + "					hallid INTEGER ,"
                     + "				    CONSTRAINT schedule_primary_key PRIMARY KEY (id))");
 
@@ -67,7 +68,7 @@ public class initialData {
                     "INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB, TYPE ) VALUES ('Bill', 'Yoga', 'bill', '123', '1997-07-10', 'MEMBER')");
 
             // halls
-            stmt.execute("INSERT INTO HALLS(hallNo, NAME, totalSeat) VALUES (1, 'Laser', 250)");
+            stmt.execute("INSERT INTO HALLS(hallNo, NAME, totalSeat) VALUES (1, 'LASER', 250)");
             stmt.execute("INSERT INTO HALLS(hallNo, NAME, totalSeat) VALUES (2, 'IMAX', 350)");
             stmt.execute("INSERT INTO HALLS(hallNo, NAME, totalSeat) VALUES (3, 'Dolby', 200)");
 
