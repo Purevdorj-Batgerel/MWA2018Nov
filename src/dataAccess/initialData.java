@@ -52,7 +52,7 @@ public class initialData {
 					+ "					id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
 					+ "					name VARCHAR(40) NOT NULL," 
 					+ "					type VARCHAR(24),"
-					+ "					duringTime VARCHAR(24),"
+					+ "					duringTime INTEGER,"
 					+ "					rate VARCHAR(24)," 
 					+ "					director VARCHAR(100)," 
 					+ "					picture BLOB," 
@@ -88,7 +88,7 @@ public class initialData {
 					+ "					amount INTEGER,"
 					+ "				    CONSTRAINT payment_primary_key PRIMARY KEY (id))");
 
-			stmt.execute("ALTER TABLE schedules ADD CONSTRAINT MOVIE_FK " + 
+		/*	stmt.execute("ALTER TABLE schedules ADD CONSTRAINT MOVIE_FK " + 
 					"			Foreign Key (movid) REFERENCES movies (id)");
 			stmt.execute("ALTER TABLE schedules ADD CONSTRAINT HALL_FK " + 
 					"			Foreign Key (hallid) REFERENCES halls (id)");
@@ -98,16 +98,16 @@ public class initialData {
 					"			Foreign Key (payid) REFERENCES payments (id)");
 			stmt.execute("ALTER TABLE bookings ADD CONSTRAINT MEMBER_FK " + 
 					"			Foreign Key (mid) REFERENCES members (id)");
-			
+			*/
 			
 			// insert initial data
 			//staffs
-			stmt.execute("INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB ) VALUES ('Bob', 'John', 'bob', '123', '1996-09-12', 'STAFF')");
-			stmt.execute("INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB ) VALUES ('Bold', 'Bat', 'bold', '1', '1996-09-07', 'STAFF')");
+			stmt.execute("INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB, TYPE ) VALUES ('Bob', 'John', 'bob', '123', '1996-09-12', 'STAFF')");
+			stmt.execute("INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB, TYPE ) VALUES ('Bold', 'Bat', 'bold', '1', '1996-09-07', 'STAFF')");
 			//members
-			stmt.execute("INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB ) VALUES ('Denis', 'John', 'admin', '123', '1986-01-09', 'MEMBER')");
-			stmt.execute("INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB ) VALUES ('nice', 'Guru', 'nice', '123', '1999-09-11', 'MEMBER')");
-			stmt.execute("INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB ) VALUES ('Bill', 'Yoga', 'bill', '123', '1997-07-10', 'MEMBER')");
+			stmt.execute("INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB, TYPE ) VALUES ('Denis', 'John', 'admin', '123', '1986-01-09', 'MEMBER')");
+			stmt.execute("INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB, TYPE ) VALUES ('nice', 'Guru', 'nice', '123', '1999-09-11', 'MEMBER')");
+			stmt.execute("INSERT INTO STAFFS(FNAME, LNAME, USERNAME, PASSWORD, DOB, TYPE ) VALUES ('Bill', 'Yoga', 'bill', '123', '1997-07-10', 'MEMBER')");
 			
 			//halls
 			stmt.execute("INSERT INTO HALLS(hallNo, NAME, totalSeat) VALUES (1, 'Laser', 250)");
@@ -136,11 +136,11 @@ public class initialData {
             conn.commit();*/
 			
 			//movies
-			stmt.execute("INSERT INTO MOVIES(name, type, duringTime, rate, director, description) VALUES ('Avengers - Infinity War', 'ACTION', 120, 'PG_13', 'DIRECTOR', '')");
-			stmt.execute("INSERT INTO MOVIES(name, type, duringTime, rate, director, description) VALUES ('Hotel Transylvania 3', 'ACTION', 120, 'PG_13', 'DIRECTOR', ''"); 
-			stmt.execute("INSERT INTO MOVIES(name, type, duringTime, rate, director, description) VALUES ('Mission Impossible: FALLOUT', 'ACTION', 120, 'PG_13', 'DIRECTOR', ''"); 
-			stmt.execute("INSERT INTO MOVIES(name, type, duringTime, rate, director, description) VALUES ('The MEG', 'ACTION', 120, 'PG_13', 'DIRECTOR', ''"); 
-			stmt.execute("INSERT INTO MOVIES(name, type, duringTime, rate, director, description) VALUES ('Christoper Robin', 'ACTION', 120, 'PG_13', 'DIRECTOR', ''");
+			stmt.execute("INSERT INTO MOVIES(name, type, duringTime, rate, director, description) VALUES ('Avengers - Infinity War', 'ACTION', 156, 'PG_13', 'DIRECTOR', '')");
+			stmt.execute("INSERT INTO MOVIES(name, type, duringTime, rate, director, description) VALUES ('Hotel Transylvania 3', 'ANIMATION', 97, 'PG_13', 'DIRECTOR', '')"); 
+			stmt.execute("INSERT INTO MOVIES(name, type, duringTime, rate, director, description) VALUES ('Mission Impossible: FALLOUT', 'ACTION', 147, 'PG_13', 'DIRECTOR', '')"); 
+			stmt.execute("INSERT INTO MOVIES(name, type, duringTime, rate, director, description) VALUES ('The MEG', 'ACTION', 113, 'PG_13', 'DIRECTOR', '')"); 
+			stmt.execute("INSERT INTO MOVIES(name, type, duringTime, rate, director, description) VALUES ('Christoper Robin', 'ANIMATION', 105, 'PG_13', 'DIRECTOR', '')");
 		
 			System.out.println("created tables");
 			
