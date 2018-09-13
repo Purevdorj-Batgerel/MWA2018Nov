@@ -1,19 +1,18 @@
 package Main;
 
+import Controllers.IController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.ResourceBundle;
 
 public class ScreenController {
     private HashMap<String, String> screenMap = new HashMap<>();
-    private Stage main;
+    private Scene main;
 
-    public ScreenController(Stage main) {
+    public ScreenController(Scene main) {
         this.main = main;
     }
 
@@ -26,31 +25,25 @@ public class ScreenController {
     }
 
     protected void activate(String name) {
-        Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource(screenMap.get(name)));
+            Parent root = FXMLLoader.load(getClass().getResource(screenMap.get(name)));
+            main.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Scene mainScene = new Scene(root, 900, 600);
-        main.setScene(mainScene);
-
-//        try {
-//            Parent root = FXMLLoader.load(getClass().getResource(screenMap.get(name)));
-//            main.setRoot(root);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
-    protected void activate(String name, String key, Object value) {
 
-        activate(name);
-//        try {
-//            Parent root = FXMLLoader.load(getClass().getResource(screenMap.get(name)));
-//            main.setRoot(root);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    protected void activate(String name, String key, Object value) {
+        main.getProperties().put(key, value);
+        System.out.println("SET " + main);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(screenMap.get(name)));
+            Parent root = loader.load();
+            IController controller = loader.getController();
+            controller.setData(key, value);
+            main.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

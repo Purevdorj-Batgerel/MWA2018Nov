@@ -1,36 +1,52 @@
 package dataAccess;
 
-import java.sql.SQLException;
-
 import domain.Movie;
-import domain.MovieScheduledFactory;
-import javafx.scene.shape.MoveTo;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 public final class DBFactory {
 
-	public static Boolean login(String uname, String password) {
-		try {
-			DBConnection Conn = new DBConnection();
-			return Conn.getPassByUname(uname).equals(password);
+    public static Boolean login(String uname, String password) {
+        try {
+            DBConnection Conn = new DBConnection();
+            return Conn.getPassByUname(uname).equals(password);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	public static Boolean addMovie(Movie mov) {
-		try {
-			DBConnection Conn = new DBConnection();
-		//	return Conn.getPassByUname(uname).equals(password);
-		
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	
+    public static int addMovie(Movie mov) {
+        int insertID = -1;
+        try {
+            DBConnection conn = new DBConnection();
+            insertID = conn.addMovieByObject(mov);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return insertID;
+    }
 
+    public static List<Movie> getMovieList() {
+        try {
+            DBConnection connection = new DBConnection();
+            return connection.getMovieList();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Map<String, Object> getMovieData(int movieId) {
+        try {
+            DBConnection connection = new DBConnection();
+            return connection.getMovieDetail(movieId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

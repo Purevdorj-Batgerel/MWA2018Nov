@@ -1,14 +1,21 @@
 package Controllers;
 
 import Main.MainWindow;
+import dataAccess.DBFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
-public class MoreWindowController {
+import java.util.Map;
+
+public class MoreWindowController implements IController {
     @FXML
     public VBox rootLayout;
+    @FXML
+    private ImageView posterImageView;
     @FXML
     private Label titleLabel;
     @FXML
@@ -22,14 +29,24 @@ public class MoreWindowController {
     @FXML
     private Label ageRatingLabel;
 
-
-    @FXML
-    public void initialize() {
-
-        System.out.println("GET" + rootLayout.getScene());
+    public void handleBackAction(ActionEvent actionEvent) {
+        MainWindow.changeScene("Main");
     }
 
-    public void hanleBackAction(ActionEvent actionEvent) {
-        MainWindow.changeScene("Main");
+    @Override
+    public void setData(String key, Object value) {
+        //search database key value
+        System.out.println(key + value);
+        Map<String, Object> movieInfo = DBFactory.getMovieData((Integer) value);
+        titleLabel.setText((String) movieInfo.get("name"));
+        typeLabel.setText((String) movieInfo.get("type"));
+        durationLabel.setText((Integer) movieInfo.get("duringtime") + " min");
+        descriptionLabel.setText((String) movieInfo.get("description"));
+        directorLabel.setText((String) movieInfo.get("director"));
+        ageRatingLabel.setText((String) movieInfo.get("rate"));
+
+
+        Image posterImage = new Image((String) movieInfo.get("picture"));
+        posterImageView.setImage(posterImage);
     }
 }

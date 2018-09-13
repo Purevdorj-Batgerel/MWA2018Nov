@@ -1,75 +1,101 @@
 package domain;
 
 
+import dataAccess.DBFactory;
+
 public class Movie {
-	private String name;
-	private TypeMovie type;
-	private int duringTime;
-	private String director;
-	private AgeRating rate;
-	private String description;
+    private int id;
+    private String name;
+    private TypeMovie type;
+    private int duringTime;
+    private String director;
+    private AgeRating rate;
+    private String description;
+    private String picture;
 
-	Movie(String name, TypeMovie type, int time, String director, AgeRating rate, String description) {
-		this.name = name;
-		this.type = type;
-		this.duringTime = time;
-		this.director = director;
-		this.rate = rate;
-		this.description = description;
-	}
+    Movie(int id, String name, TypeMovie type, int time, String director, AgeRating rate, String description) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.duringTime = time;
+        this.director = director;
+        this.rate = rate;
+        this.description = description;
+    }
 
-	public String getName() {
-		return name;
-	}
+    Movie(int id, String name, TypeMovie type, int time, String director, AgeRating rate, String description, String picture) {
+        this(id, name, type, time, director, rate, description);
+        this.picture = picture;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getPicture() {
+        return picture;
+    }
 
-	public TypeMovie getType() {
-		return type;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setType(TypeMovie type) {
-		this.type = type;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getDuringTime() {
-		return duringTime;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setDuringTime(int duringTime) {
-		this.duringTime = duringTime;
-	}
+    public TypeMovie getType() {
+        return type;
+    }
 
-	public String getDirector() {
-		return director;
-	}
+    public void setType(TypeMovie type) {
+        this.type = type;
+    }
 
-	public void setDirector(String director) {
-		this.director = director;
-	}
+    public int getDuringTime() {
+        return duringTime;
+    }
 
-	public AgeRating getRate() {
-		return rate;
-	}
+    public void setDuringTime(int duringTime) {
+        this.duringTime = duringTime;
+    }
 
-	public void setRate(AgeRating rate) {
-		this.rate = rate;
-	}
+    public String getDirector() {
+        return director;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setDirector(String director) {
+        this.director = director;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public AgeRating getRate() {
+        return rate;
+    }
 
-	@Override
-	public String toString() {
-		return String.format(
-				"Movie name: %s,\nType: %s\nDuring time: %d\n" + "Director: %s\nAge rating: %s\nDescription: %s",
-				this.name, this.type, this.duringTime, this.director, this.rate, this.description);
-	}
+    public void setRate(AgeRating rate) {
+        this.rate = rate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Movie name: %s,\nType: %s\nDuring time: %d\n" + "Director: %s\nAge rating: %s\nDescription: %s",
+                this.name, this.type, this.duringTime, this.director, this.rate, this.description);
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void save() {
+        this.id = DBFactory.addMovie(this);
+    }
 }

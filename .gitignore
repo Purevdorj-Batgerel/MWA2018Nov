@@ -12,3 +12,9 @@ CinemaTicketBooking\.iml
 derby\.log
 
 Cinema/db\.lck
+
+*.log
+
+*.lck
+
+\Cinema/

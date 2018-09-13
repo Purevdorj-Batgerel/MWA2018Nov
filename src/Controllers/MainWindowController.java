@@ -1,6 +1,9 @@
 package Controllers;
 
 import Main.MainWindow;
+import dataAccess.DBConnection;
+import dataAccess.DBFactory;
+import domain.Movie;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -19,8 +22,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.sql.SQLException;
+import java.util.List;
 
-public class MainWindowController {
+
+public class MainWindowController implements IController {
     @FXML
     private HBox movieHBox;
     @FXML
@@ -29,7 +35,7 @@ public class MainWindowController {
     @FXML
     public void initialize() {
         //Check database user
-        boolean isUserStaff = true;
+        boolean isUserStaff = MainWindow.currentUser.getAccountType().equals("STAFF");
 
         if (!isUserStaff) {
             addMovieButton.setVisible(false);
@@ -37,11 +43,17 @@ public class MainWindowController {
 
         //Get Movie details to populate movie list;
 
-        addMovie(156, "Action", "Avengers: Infinity War", "/Main/Views/HO00000490.jpg", 1);
-        addMovie(97, "Animation", "Hotel Transylvania 3: Summer Vacation", "/Main/Views/HO00000502.jpg", 2);
-        addMovie(147, "Action", "Mission: Impossible - Fallout", "/Main/Views/HO00000504.jpg", 3);
-        addMovie(113, "Action", "The Meg", "/Main/Views/HO00000506.jpg", 4);
-        addMovie(105, "Animation", "Christopher Robin", "/Main/Views/HO00000507.jpg", 5);
+        List<Movie> movieList= DBFactory.getMovieList();
+
+        for (Movie movie : movieList) {
+            addMovie(movie.getDuringTime(), movie.getType().toString(), movie.getName(), movie.getPicture(), movie.getId());
+        }
+
+//        addMovie(156, "Action", "Avengers: Infinity War", "/Main/Views/HO00000490.jpg", 1);
+//        addMovie(97, "Animation", "Hotel Transylvania 3: Summer Vacation", "/Main/Views/HO00000502.jpg", 2);
+//        addMovie(147, "Action", "Mission: Impossible - Fallout", "/Main/Views/HO00000504.jpg", 3);
+//        addMovie(113, "Action", "The Meg", "/Main/Views/HO00000506.jpg", 4);
+//        addMovie(105, "Animation", "Christopher Robin", "/Main/Views/HO00000507.jpg", 5);
 
         System.out.println("List Populated");
     }
@@ -112,7 +124,7 @@ public class MainWindowController {
 
     private void onMouseClick(MouseEvent mouseEvent) {
         Node component = (Node) mouseEvent.getTarget();
-        while(component.getParent() != null && !(component instanceof StackPane)) {
+        while (component.getParent() != null && !(component instanceof StackPane)) {
             component = component.getParent();
         }
         int id = (int) component.getProperties().get("id");
@@ -121,5 +133,10 @@ public class MainWindowController {
 
     public void handleAddMovieAction(ActionEvent actionEvent) {
         MainWindow.changeScene("AddMovie");
+    }
+
+    @Override
+    public void setData(String key, Object value) {
+
     }
 }

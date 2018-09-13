@@ -1,6 +1,7 @@
 package domain;
 
 public interface iPerson {
-	void login();
-	void logout();
+    boolean login(String username,String password);
+
+    void logout();
 }

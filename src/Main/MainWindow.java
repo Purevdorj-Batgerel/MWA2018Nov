@@ -1,6 +1,6 @@
 package Main;
 
-import dataAccess.DBConnection;
+import domain.Person;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,22 +8,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainWindow extends Application {
-
-    public static DBConnection Conn = null;
+    public static Person currentUser = null;
     private static ScreenController screenController;
 
     public static void main(String[] args) {
-    
-	/*	try {
-			Conn = new DBConnection();
-			Conn.insertIntoTable("Bob","Bush", "1989-11-26", "Bob", "123");
-			Conn.insertIntoTable("Ken", "Anna", "1976-03-26", "Ken", "111");
-			Conn.selectStaffs();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}*/
-
         launch(args);
     }
 
@@ -42,8 +30,7 @@ public class MainWindow extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Views/loginWindow.fxml"));
 
         Scene mainScene = new Scene(root, 900, 600);
-        screenController = new ScreenController(primaryStage);
-//        screenController = new ScreenController(mainScene);
+        screenController = new ScreenController(mainScene);
 
         screenController.addScreen("Login", "Views/loginWindow.fxml");
         screenController.addScreen("Main", "Views/mainWindow.fxml");
