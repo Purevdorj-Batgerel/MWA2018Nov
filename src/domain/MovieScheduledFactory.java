@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public class MovieScheduledFactory {
 
-    public static Hall createHall(int hallNo, int totalSeat) {
-        return new Hall(hallNo, totalSeat);
+    public static Hall createHall(int hallNo, String name, int totalSeat) {
+        return new Hall(hallNo, name, totalSeat);
     }
 
     public static Movie createMovie(int id, String name, TypeMovie type, int time, String director, AgeRating rate, String description, String picture) {

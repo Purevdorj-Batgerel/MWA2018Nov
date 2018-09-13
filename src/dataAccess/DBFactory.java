@@ -1,10 +1,11 @@
 package dataAccess;
 
-import domain.Movie;
-
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+
+import domain.Hall;
+import domain.Movie;
 
 public final class DBFactory {
 
@@ -39,6 +40,17 @@ public final class DBFactory {
         }
         return null;
     }
+    
+    public static List<Hall> getHallList() {
+        try {
+            DBConnection connection = new DBConnection();
+            return connection.getHallList();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     public static Map<String, Object> getMovieData(int movieId) {
         try {

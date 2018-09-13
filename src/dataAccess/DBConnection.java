@@ -1,15 +1,22 @@
 package dataAccess;
 
-import domain.AgeRating;
-import domain.Movie;
-import domain.MovieScheduledFactory;
-import domain.TypeMovie;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import domain.AgeRating;
+import domain.Hall;
+import domain.Movie;
+import domain.MovieScheduledFactory;
+import domain.TypeMovie;
 
 public class DBConnection {
 
@@ -23,8 +30,8 @@ public class DBConnection {
         try {
             conn = DriverManager.getConnection(JDBC_URL);
             if (conn != null) {
-                // initialdata();
                 System.out.println("Connected");
+             //   initialData.createTables(conn);
             }
 
         } catch (SQLException e) {
@@ -189,6 +196,31 @@ public class DBConnection {
 
         return movieList;
     }
+    
+    List<Hall> getHallList() {
+        List<Hall> hallList = new ArrayList<>();
+
+        try {
+            stmt = conn.createStatement();
+
+            ResultSet results = stmt.executeQuery("SELECT * FROM halls");
+
+            while (results.next()) {
+                Hall hall = MovieScheduledFactory.createHall(
+                        results.getInt("hallNo"),
+                        results.getString("name"),
+                        results.getInt("totalSeat")
+                );
+                hallList.add(hall);
+            }
+            results.close();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return hallList;
+    }
 
     Map<String, Object> getMovieDetail(int id) {
         Map<String, Object> ret = null;
@@ -213,4 +245,5 @@ public class DBConnection {
         }
         return ret;
     }
+
 }

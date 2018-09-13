@@ -11,7 +11,7 @@ public class Schedule {
              int hallNo, int totalSeat) {
         this.time = time;
         movie = new Movie(movieId, name, type, dtime, director, rate, description);
-        hall = new Hall(hallNo, totalSeat);
+        hall = new Hall(hallNo, name, totalSeat);
     }
 
     Schedule(LocalDate time, Movie movie, Hall hall) {

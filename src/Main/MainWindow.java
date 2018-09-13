@@ -34,6 +34,7 @@ public class MainWindow extends Application {
 
         screenController.addScreen("Login", "Views/loginWindow.fxml");
         screenController.addScreen("Main", "Views/mainWindow.fxml");
+        screenController.addScreen("AddSchedule", "Views/addScheduleWindow.fxml");
         screenController.addScreen("AddMovie", "Views/addMovieWindow.fxml");
         screenController.addScreen("More", "Views/moreWindow.fxml");
 

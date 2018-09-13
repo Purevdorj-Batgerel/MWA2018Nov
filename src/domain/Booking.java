@@ -12,7 +12,7 @@ public class Booking {
         this.bookingNo = bookingNo;
         this.bookingDate = bookingDate;
         Movie movie = new Movie(id, name, type, duringtime, director, rate, description);
-        Hall hall = new Hall(hallNo, totalSeat);
+        Hall hall = new Hall(hallNo, name, totalSeat);
         this.schedule = new Schedule(time, movie, hall);
         this.payment = new Payment(paymentID, paymentAmount);
     }

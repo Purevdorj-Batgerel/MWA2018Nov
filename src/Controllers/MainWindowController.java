@@ -134,6 +134,9 @@ public class MainWindowController implements IController {
     public void handleAddMovieAction(ActionEvent actionEvent) {
         MainWindow.changeScene("AddMovie");
     }
+    public void handleAddScheduleAction(ActionEvent actionEvent) {
+        MainWindow.changeScene("AddSchedule");
+    }
 
     @Override
     public void setData(String key, Object value) {
