@@ -1,8 +1,5 @@
 package Controllers;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import Main.MainWindow;
 import dataAccess.DBFactory;
 import domain.Hall;
@@ -14,37 +11,38 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class AddScheduleWindowController {
-	@FXML
-	private ChoiceBox movieChoice;
-	@FXML
-	private ChoiceBox hallChoice;
-	@FXML
-	private DatePicker dateChoice;
-	@FXML
-	private TextField timeInput;
+    @FXML
+    private ChoiceBox movieChoice;
+    @FXML
+    private ChoiceBox hallChoice;
+    @FXML
+    private DatePicker dateChoice;
+    @FXML
+    private TextField timeInput;
 
-	@FXML
-	public void initialize() {
-		movieChoice.setItems(FXCollections.observableArrayList(DBFactory.getMovieList()));
-		hallChoice.setItems(FXCollections.observableArrayList(DBFactory.getHallList()));
-	}
+    @FXML
+    public void initialize() {
+        movieChoice.setItems(FXCollections.observableArrayList(DBFactory.getMovieList()));
+        hallChoice.setItems(FXCollections.observableArrayList(DBFactory.getHallList()));
+    }
 
-	@FXML
-	public void addSchedule(ActionEvent actionEvent) {
+    @FXML
+    public void addSchedule(ActionEvent actionEvent) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime formatDateTime = LocalDateTime.parse(dateChoice.getValue() + " " + timeInput.getText(),
+                formatter);
 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		LocalDateTime formatDateTime = LocalDateTime.parse(dateChoice.getValue() + " " + timeInput.getText(),
-				formatter);
+        Movie movie = (Movie) movieChoice.getValue();
+        Hall hall = (Hall) hallChoice.getValue();
 
-		Movie m = (Movie) movieChoice.getValue();
-		Hall h = (Hall) hallChoice.getValue();
-
-		if (DBFactory.addSchedule(m, h, formatDateTime)) {
-			MainWindow.changeScene("Main");
-		}
-		else System.out.println("fail");
-
-	}
-
+        if (DBFactory.addSchedule(movie, hall, formatDateTime)) {
+            MainWindow.changeScene("Main");
+        } else {
+            System.out.println("fail");
+        }
+    }
 }

@@ -3,17 +3,18 @@ package Controllers;
 import Main.MainWindow;
 import dataAccess.DBConnection;
 import dataAccess.initialData;
+
 import domain.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import rulesets.RuleException;
 import rulesets.RuleSet;
 import rulesets.RuleSetFactory;
-
-import java.sql.SQLException;
 
 public class LoginWindowController implements IController {
     @FXML
@@ -33,6 +34,10 @@ public class LoginWindowController implements IController {
 
     @FXML
     public void handleSubmitButtonAction(ActionEvent event) {
+        login();
+    }
+
+    private void login() {
         actionTarget.setText("");
         try {
             RuleSet rules = RuleSetFactory.getRuleSet(LoginWindowController.this);
@@ -62,5 +67,11 @@ public class LoginWindowController implements IController {
     @Override
     public void setData(String key, Object value) {
 
+    }
+
+    public void onKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            login();
+        }
     }
 }

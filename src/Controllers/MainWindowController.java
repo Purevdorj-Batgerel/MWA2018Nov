@@ -1,7 +1,6 @@
 package Controllers;
 
 import Main.MainWindow;
-import dataAccess.DBConnection;
 import dataAccess.DBFactory;
 import domain.Movie;
 import javafx.animation.Interpolator;
@@ -22,11 +21,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
-import java.sql.SQLException;
 import java.util.List;
 
 
 public class MainWindowController implements IController {
+    @FXML
+    private Button addScheduleButton;
     @FXML
     private HBox movieHBox;
     @FXML
@@ -39,14 +39,15 @@ public class MainWindowController implements IController {
 
         if (!isUserStaff) {
             addMovieButton.setVisible(false);
+            addScheduleButton.setVisible(false);
         }
 
-        //Get Movie details to populate movie list;
+        List<Movie> movieList = DBFactory.getMovieList();
 
-        List<Movie> movieList= DBFactory.getMovieList();
-
-        for (Movie movie : movieList) {
-            addMovie(movie.getDuringTime(), movie.getType().toString(), movie.getName(), movie.getPicture(), movie.getId());
+        if (movieList != null) {
+            for (Movie movie : movieList) {
+                addMovie(movie.getDuringTime(), movie.getType().toString(), movie.getName(), movie.getPicture(), movie.getId());
+            }
         }
 
 //        addMovie(156, "Action", "Avengers: Infinity War", "/Main/Views/HO00000490.jpg", 1);
@@ -107,7 +108,7 @@ public class MainWindowController implements IController {
     }
 
     @FXML
-    public void onMouseEnter(MouseEvent event) {
+    private void onMouseEnter(MouseEvent event) {
         TranslateTransition animation = new TranslateTransition(Duration.millis(200), ((StackPane) event.getTarget()).getChildren().get(1));
         animation.setInterpolator(Interpolator.EASE_BOTH);
         animation.setToY(-20f);
@@ -115,7 +116,7 @@ public class MainWindowController implements IController {
     }
 
     @FXML
-    public void onMouseExit(MouseEvent event) {
+    private void onMouseExit(MouseEvent event) {
         TranslateTransition animation = new TranslateTransition(Duration.millis(200), ((StackPane) event.getTarget()).getChildren().get(1));
         animation.setInterpolator(Interpolator.EASE_BOTH);
         animation.setToY(0f);
@@ -134,6 +135,7 @@ public class MainWindowController implements IController {
     public void handleAddMovieAction(ActionEvent actionEvent) {
         MainWindow.changeScene("AddMovie");
     }
+
     public void handleAddScheduleAction(ActionEvent actionEvent) {
         MainWindow.changeScene("AddSchedule");
     }

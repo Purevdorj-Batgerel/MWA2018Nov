@@ -54,10 +54,9 @@ public class AddMovieWindowController implements IController {
         File file = fileChooser.showOpenDialog(((Button) actionEvent.getTarget()).getScene().getWindow());
         System.out.println(file);
 
-        if (file == null) {
-            // cancel
-        } else {
-            // Chosen D:\Study\Modern Programming practice\groupProject\CinemaTicketBooking\src\Main\Views\HO00000507.jpg
+        if (file == null) { // cancel
+        } else {    // Chosen
+            // Example :: D:\Study\Modern Programming practice\groupProject\CinemaTicketBooking\src\Main\Views\HO00000507.jpg
             picturePath = file.toURI().toString();
             Image posterImage = new Image(picturePath);
             posterImageView.setImage(posterImage);
@@ -76,7 +75,6 @@ public class AddMovieWindowController implements IController {
         movie.save();
 
         MainWindow.changeScene("Main");
-
     }
 
     @Override

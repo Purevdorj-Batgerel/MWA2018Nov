@@ -75,6 +75,8 @@ public class initialData {
             // movies
 
             stmt.execute(
+                    "INSERT INTO MOVIES(name, type, duringTime, rate, director, description, picture) VALUES ('Warcraft', 'ACTION', 123, 'PG', 'Duncan Jones', 'The peaceful realm of Azeroth stands on the brink of war as its civilization faces a fearsome race of invaders: orc warriors fleeing their dying home to colonize another.', '/Main/Views/HO00000198.jpg')");
+            stmt.execute(
                     "INSERT INTO MOVIES(name, type, duringTime, rate, director, description, picture) VALUES ('Avengers - Infinity War', 'ACTION', 156, 'PG_13', 'DIRECTOR', '', '/Main/Views/HO00000490.jpg')");
             stmt.execute(
                     "INSERT INTO MOVIES(name, type, duringTime, rate, director, description, picture) VALUES ('Hotel Transylvania 3', 'ANIMATION', 97, 'PG_13', 'DIRECTOR', '', '/Main/Views/HO00000502.jpg')");

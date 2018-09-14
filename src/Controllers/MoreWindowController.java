@@ -38,15 +38,15 @@ public class MoreWindowController implements IController {
         //search database key value
         System.out.println(key + value);
         Map<String, Object> movieInfo = DBFactory.getMovieData((Integer) value);
-        titleLabel.setText((String) movieInfo.get("name"));
-        typeLabel.setText((String) movieInfo.get("type"));
-        durationLabel.setText((Integer) movieInfo.get("duringtime") + " min");
-        descriptionLabel.setText((String) movieInfo.get("description"));
-        directorLabel.setText((String) movieInfo.get("director"));
-        ageRatingLabel.setText((String) movieInfo.get("rate"));
-
-
-        Image posterImage = new Image((String) movieInfo.get("picture"));
-        posterImageView.setImage(posterImage);
+        if (movieInfo != null) {
+            titleLabel.setText((String) movieInfo.get("name"));
+            typeLabel.setText((String) movieInfo.get("type"));
+            durationLabel.setText((Integer) movieInfo.get("duringtime") + " min");
+            descriptionLabel.setText((String) movieInfo.get("description"));
+            directorLabel.setText((String) movieInfo.get("director"));
+            ageRatingLabel.setText((String) movieInfo.get("rate"));
+            Image posterImage = new Image((String) movieInfo.get("picture"));
+            posterImageView.setImage(posterImage);
+        }
     }
 }

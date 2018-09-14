@@ -1,12 +1,12 @@
 package dataAccess;
 
+import domain.Hall;
+import domain.Movie;
+
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
-
-import domain.Hall;
-import domain.Movie;
 
 public final class DBFactory {
 
@@ -41,7 +41,7 @@ public final class DBFactory {
         }
         return null;
     }
-    
+
     public static List<Hall> getHallList() {
         try {
             DBConnection connection = new DBConnection();
@@ -63,15 +63,13 @@ public final class DBFactory {
         return null;
     }
 
-	public static Boolean addSchedule(Movie m, Hall h, LocalDateTime d) {
-		// TODO Auto-generated method stub
-		  try {
-	            DBConnection conn = new DBConnection();
-	            return conn.addScheduleByObject(m,h,d);
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-		return false;
-		
-	}
+    public static Boolean addSchedule(Movie movie, Hall hall, LocalDateTime date) {
+        try {
+            DBConnection conn = new DBConnection();
+            return conn.addScheduleByObject(movie, hall, date);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

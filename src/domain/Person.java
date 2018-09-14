@@ -1,7 +1,6 @@
 package domain;
 
 import dataAccess.DBConnection;
-import dataAccess.DBFactory;
 
 import java.io.Serializable;
 import java.sql.SQLException;

@@ -18,7 +18,7 @@
     <Label text="User Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
     <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-    <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <PasswordField fx:id="password" onKeyPressed="#onKeyPressed" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
         <Button onAction="#handleSubmitButtonAction" text="Button" />
@@ -29,18 +29,18 @@
     <stylesheets>
         <URL value="@CSS/login.css" />
     </stylesheets>
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
 
 </GridPane>
