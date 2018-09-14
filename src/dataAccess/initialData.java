@@ -36,7 +36,9 @@ public class initialData {
 
             stmt.execute("CREATE TABLE schedules ("
                     + "					id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
-                    + "					sdate DATETIME," + "					movid INTEGER,"
+                    + "					sdate DATE," 
+                    + "					stime TIME," 
+                    + "					movid INTEGER,"
                     + "					hallid INTEGER ,"
                     + "				    CONSTRAINT schedule_primary_key PRIMARY KEY (id))");
 
