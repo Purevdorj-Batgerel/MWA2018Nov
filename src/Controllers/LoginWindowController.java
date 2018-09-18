@@ -1,9 +1,6 @@
 package Controllers;
 
 import Main.MainWindow;
-import dataAccess.DBConnection;
-import dataAccess.initialData;
-
 import domain.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,6 +33,7 @@ public class LoginWindowController implements IController {
     public void handleSubmitButtonAction(ActionEvent event) {
         login();
     }
+
 
     private void login() {
         actionTarget.setText("");

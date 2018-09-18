@@ -1,5 +1,6 @@
 package rulesets;
 
+import Controllers.AddMovieWindowController;
 import Controllers.IController;
 import Controllers.LoginWindowController;
 
@@ -11,6 +12,7 @@ final public class RuleSetFactory {
 
     static {
         map.put(LoginWindowController.class, new LoginRuleSet());
+        map.put(AddMovieWindowController.class, new AddMovieRuleSet());
     }
 
     private RuleSetFactory() {

@@ -1,6 +1,6 @@
 
 \.idea/
-\out/
+
 
 CinemaTicketBooking\.iml
 
@@ -17,4 +17,6 @@ Cinema/db\.lck
 
 *.lck
 
-\Cinema/
+Cinema/
+
+out/production/

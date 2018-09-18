@@ -25,6 +25,7 @@ public class DBConnection {
                 // initialData.createTables(conn);
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new SQLException("Cannot connect!!!");
         }
     }
@@ -37,6 +38,10 @@ public class DBConnection {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void initialData() {
+        initialData.createTables(conn);
     }
 
     String getPassByUname(String uname) {
@@ -69,14 +74,14 @@ public class DBConnection {
                     "'" + movie.getDirector() + "', " +
                     "'" + movie.getPicture() + "', " +
                     "'" + movie.getDescription() + "'" +
-                    ")", new String[]{"ID_COLUMN"});
+                    ")");
 
             preparedStatement.executeUpdate();
-
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            if (resultSet.next()) {
-                insertID = resultSet.getInt(1);
-            }
+//
+//            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+//            if (resultSet.next()) {
+//                insertID = resultSet.getInt(1);
+//            }
 
             stmt.close();
             return insertID;

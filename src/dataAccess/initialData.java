@@ -27,7 +27,7 @@ public class initialData {
                     + "					description  VARCHAR(1000),"
                     + "				    CONSTRAINT movie_primary_key PRIMARY KEY (id))");
 
-            stmt.execute("CREATE TABLE halls ("
+                stmt.execute("CREATE TABLE halls ("
                     + "					id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
                     + "					hallNo INTEGER NOT NULL," 
                     + "					NAME VARCHAR(24),"
@@ -45,7 +45,7 @@ public class initialData {
             stmt.execute("CREATE TABLE bookings ("
                     + "					id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"
                     + "					bdate DATE," + "					mid INTEGER NOT NULL,"
-                    + "					schid INTEGER NOT NULL," + "					payid INTEGER NOT NULL,"
+                        + "					schid INTEGER NOT NULL," + "					payid INTEGER NOT NULL,"
                     + "					qty INTEGER ,"
                     + "				    CONSTRAINT booking_primary_key PRIMARY KEY (id))");
 
